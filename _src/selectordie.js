@@ -1,8 +1,8 @@
 /* ===========================================================
  *
  *  Name:          selectordie.js
- *  Updated:       2014-10-11
- *  Version:       0.1.8
+ *  Updated:       2016-12-02
+ *  Version:       0.1.9
  *  Created by:    Per V @ Vst.mn
  *  What?:         The Select or Die JS
  *
@@ -32,7 +32,9 @@
                 linksExternal:     false,     // Boolean  - false by default - Should the options be treated as links and open in a new window/tab?
                 size:              0,         // Integer  - 0 by default - The value set equals the amount of items before scroll is needed
                 tabIndex:          0,         // integer  - 0 by default
-                onChange:          $.noop     // Adds a callback function for when the SoD gets changed
+                onChange:          $.noop,     // Adds a callback function for when the SoD gets changed
+                onClose:           $.noop,     // Adds a callback function for when the SoD close
+                onOpen:            $.noop     // Adds a callback function for when the SoD open
             },
             $_settings = {},
             $_sodKeysWhenClosed = false,
@@ -268,6 +270,9 @@
                     // Add the .open class to display list
                     $sod.addClass("open");
 
+                    // Triggers the onOpen callback
+                    $_settings.onOpen.call(this);
+
                     // If a placeholder is set, then show it
                     if ( $sodPlaceholder && !$sod.data("prefix") ) {
                         $sod.find(".sod_label").addClass("sod_placeholder").html($sodPlaceholder);
@@ -283,6 +288,9 @@
                     // Clears viewport check timeout
                     clearTimeout($_sodViewportTimeout);
                     $sod.removeClass("open");
+
+                    // Triggers the onClose callback
+                    $_settings.onClose.call(this);
 
                     // If a placeholder is set, make sure the placeholder text is removed if
                     // the user toggles the select using his mouse
@@ -422,6 +430,9 @@
 
                 // Hide the list
                 $sod.removeClass("open");
+
+                // Triggers the onClose callback
+                $_settings.onClose.call(this);
             }, // optionClick
 
 
@@ -482,6 +493,9 @@
 
                     // Remove open/focus class
                     $sod.removeClass("open focus");
+
+                    // Triggers the onClose callback
+                    $_settings.onClose.call(this);
 
                     // Blur the SOD
                     $sod.blur();
