@@ -265,8 +265,8 @@
                     $optionActive   = $sod.find(".active"),
                     $optionSelected = $sod.find(".selected");
 
-                // Trigger the SoD if it's not disabled, already open or a touch device
-                if ( !$sod.hasClass("disabled") && !$sod.hasClass("open") && !$sod.hasClass("touch") ) {
+                // Trigger the SoD if it's not disabled, already open
+                if ( !$sod.hasClass("disabled") && !$sod.hasClass("open") ) {
                     // Add the .open class to display list
                     $sod.addClass("open");
 
