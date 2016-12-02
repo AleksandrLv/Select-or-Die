@@ -265,8 +265,9 @@
                     $optionActive   = $sod.find(".active"),
                     $optionSelected = $sod.find(".selected");
 
-                // Trigger the SoD if it's not disabled, already open
-                if ( !$sod.hasClass("disabled") && !$sod.hasClass("open") ) {
+                // Trigger the SoD if it's not disabled, already open or a touch device
+                if ( !$sod.hasClass("disabled") && !$sod.hasClass("open") && !$sod.hasClass("touch") ) {
+
                     // Add the .open class to display list
                     $sod.addClass("open");
 
@@ -539,8 +540,10 @@
 
 
             isTouch: function () {
-                return (("ontouchstart" in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-            } // isTouch
+                var isDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                var isTouch = (("ontouchstart" in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+                return (isDevice && isTouch);
+            } // isTouch and is mobile device
 
         };
 
