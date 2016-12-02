@@ -1,0 +1,21 @@
+{
+  "name": "select-or-die-lv",
+  "version": "0.1.9",
+  "description": "select plugin",
+  "main": "_src/selectordie.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleksandrLv/Select-or-Die.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AleksandrLv/Select-or-Die/issues"
+  },
+  "homepage": "https://github.com/AleksandrLv/Select-or-Die#readme"
+}
